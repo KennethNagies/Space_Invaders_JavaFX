@@ -1,14 +1,58 @@
-
+/*
+ * 	CLASS Hitbox
+ * 		DECLARE boundaries as a Rectangle
+ * 		DECLARE sprite as a Sprite
+ * 		DECLARE Pane as a pane
+ *
+ * 		METHOD Hitbox(double, double, Sprite, Pane)
+ * 			INITIALIZE boundaries as a Rectangle at 0,0 with width and height
+ * 			INITIALIZE sprite
+ * 		END METHOD Hitbox(double, double, Sprite, Pane)
+ *
+ * 		METHOD checkCollision(Sprite)
+ * 			IF(The hitbox of the given Sprite and this hitbox are colliding)
+ * 				CALL onCollide for both Sprites
+ * 			END IF
+ * 		END METHOD checkCollision(Sprite)
+ *
+ * 		METHOD getBoundaries()
+ * 			RETURN boundaries
+ * 		END METHOD getBoundaries()
+ *
+ * 		METHOD getPane()
+ * 			RETURN pane
+ * 		END METHOD getPane()
+ *
+ * 		METHOD setBoundaries(Rectangle)
+ * 			SET boundaries to the given Rectangle
+ * 		END METHOD setBoundaries(Rectangle)
+ *
+ * 	END CLASS Hitbox
+ *
+ */
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
+/**
+ * Defines a hitbox for handling collisions
+ * @author Kenneth Nagies
+ * @version September 2, 2016
+ *
+ */
 public class Hitbox
 {
 	private Rectangle boundaries;
 	private Sprite sprite;
 	private Pane pane;
 
-	Hitbox(double width,double height, Sprite sprite, Pane pane)
+	/**
+	 * Constructs a hitbox object and ties it to a sprite
+	 * @param width The width of the hitbox
+	 * @param height the height of the hitbox
+	 * @param sprite the sprite that the hitbox will be attached to
+	 * @param pane The pane the hitbox will be displayed in
+	 */
+	public Hitbox(double width,double height, Sprite sprite, Pane pane)
 	{
 		// Create a default hitbox with given dimensions at 0,0
 		// Hitbox location will be bound in specific sprite class
@@ -16,6 +60,10 @@ public class Hitbox
 		this.sprite = sprite;
 	}
 
+	/**
+	 * Handles collision checking between this and other hitboxes
+	 * @param sprite The sprite that a collision is being checked with
+	 */
 	protected void checkCollision(Sprite sprite)
 	{
 		// Checks to see if any point within the given sprite's hitbox is within this hitbox
@@ -27,16 +75,28 @@ public class Hitbox
 		}
 	}
 
+	/**
+	 * Returns the rectangle that forms the bounds of the hitbox
+	 * @return the bounding rectangle
+	 */
 	protected Rectangle getBoundaries()
 	{
 		return boundaries;
 	}
 
+	/**
+	 * Returns the pane to display the hitbox and sprites in
+	 * @return the display pane
+	 */
 	protected Pane getPane()
 	{
 		return pane;
 	}
 
+	/**
+	 * Sets the bounding rectangle of the hitbox
+	 * @param boundaries the ractangle to be the bounds
+	 */
 	protected void setBoundaries(Rectangle boundaries)
 	{
 		this.boundaries = boundaries;

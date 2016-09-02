@@ -11,15 +11,15 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
+/**
+ * The class that creates the SpaceInvaders game instance
+ * @author Kenneth Nagies
+ * @version September 2, 2016
+ *
+ */
 public class SpaceInvaders
 {
 	private Pane pane;
-	private ArrayList<Alien> row1 = new ArrayList<Alien>();
-	private ArrayList<Alien> row2 = new ArrayList<Alien>();
-	private ArrayList<Alien> row3 = new ArrayList<Alien>();
-	private ArrayList<Alien> row4 = new ArrayList<Alien>();
-	private ArrayList<Alien> row5 = new ArrayList<Alien>();
 	private ArrayList<ArrayList<Alien>> aliens = new ArrayList<ArrayList<Alien>>();
 	private boolean moveDown = false;
 	private boolean moveLeft = false;
@@ -27,17 +27,16 @@ public class SpaceInvaders
 	private boolean killAllShots = false;
 	private double shotChance = 0.003;
 	private Player player;
-	int lives;
+	private int lives;
 	private int score;
 	private int kills = 0;
 	private int round;
-	int currentRow = 0;
-	int moveX = 0;
-	int moveY = 0;
+	private int currentRow = 0;
+	private int moveX = 0;
+	private int moveY = 0;
 
 	private Text scoreText;
 	private Text livesText;
-	private Font font = new Font(40);
 	private int frameCount = 1;
 	private ArrayList<Shot> shotList = new ArrayList<Shot>();
 	private Shield[] shieldList = new Shield[5];
@@ -90,8 +89,8 @@ public class SpaceInvaders
 	{
 		scoreText = new Text("Score: " + String.valueOf(score) + "<" + String.valueOf(round) + ">");
 		livesText = new Text("Lives: " + String.valueOf(lives));
-		scoreText.setFont(font);
-		livesText.setFont(font);
+		scoreText.setFont(new Font(40));
+		livesText.setFont(new Font(40));
 		scoreText.setFill(Color.WHITE);
 		livesText.setFill(Color.WHITE);
 		scoreText.xProperty().bind(pane.widthProperty().divide(4.5).subtract(scoreText.getLayoutBounds().getWidth()/2));
@@ -103,7 +102,7 @@ public class SpaceInvaders
 	}
 
 	// update text objects to reflect current score and lives
-	public void updateText()
+	private void updateText()
 	{
 		scoreText.setText("Score: " + String.valueOf(score) + "<" + String.valueOf(round) + ">");
 		livesText.setText("Lives: " + String.valueOf(lives));
@@ -486,11 +485,11 @@ public class SpaceInvaders
 		int type = 1;
 		// To handle differences in size between alien sprites
 		int widthPadding = 0;
-		aliens.add(row1);
-		aliens.add(row2);
-		aliens.add(row3);
-		aliens.add(row4);
-		aliens.add(row5);
+		aliens.add(new ArrayList<Alien>());
+		aliens.add(new ArrayList<Alien>());
+		aliens.add(new ArrayList<Alien>());
+		aliens.add(new ArrayList<Alien>());
+		aliens.add(new ArrayList<Alien>());
 		for (int i = 0; i < 5; i++)
 		{
 			// Adjusts width padding for small sprites (48 pixels are reserved in width, and 32 are used for type 1)
@@ -582,7 +581,7 @@ public class SpaceInvaders
 		}
 	}
 
-	public void end()
+	private void end()
 	{
 		// stops all animations
 		shotAnimation.stop();

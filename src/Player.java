@@ -1,19 +1,32 @@
-
+/*
+ * 	SAME AS ALIEN, BUT WITH PLAYER SPRITE
+ */
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
+/**
+ * Creates the player sprite, extends the sprite class
+ * @author Kenneth Nagies
+ * @version September 2, 2016
+ *
+ */
 public class Player extends Sprite
 {
 	private boolean canShoot = true;
 	private SpaceInvaders game;
 
+	/**
+	 * Creates the player sprite
+	 * @param game the game the player is in
+	 * @param pane The pane to be drawn on
+	 */
 	public Player(SpaceInvaders game, Pane pane)
 	{
 		// Constructs a Sprite with the player image and dimensions
-		super(60, 32, new Image("Sprites/Player.png", 60, 32, false, false), new Image("Sprites/Player.png", 60, 32, false, false), pane);
+		super(60, 32, new Image("/Sprites/Player.png", 60, 32, false, false), new Image("/Sprites/Player.png", 60, 32, false, false), pane);
 		body = new ImageView(image1);
 		offsetX = -30;
 		// Binds the x property of the sprite to the center of the pane minus half its width, plus an offset
@@ -30,6 +43,9 @@ public class Player extends Sprite
 		this.game = game;
 	}
 
+	/**
+	 * Handles death and respawn of the player
+	 */
 	@Override
 	public void kill()
 	{
@@ -49,6 +65,10 @@ public class Player extends Sprite
 		kill();
 	}
 
+	/**
+	 * Moves the player left or right
+	 * @param direction the direction to move. Positive is right, negative is left
+	 */
 	public void move(int direction)
 	{
 		int speed = 4;
@@ -70,6 +90,10 @@ public class Player extends Sprite
 		}
 	}
 
+	/**
+	 * Shoots
+	 * @param shotList the list the shot will be added to
+	 */
 	public void shoot(ArrayList<Shot> shotList)
 	{
 		if (canShoot)
@@ -81,12 +105,20 @@ public class Player extends Sprite
 		}
 	}
 
-	// tells whether or not the player can shoot yet
+	/**
+	 *  tells whether or not the player can shoot yet
+	 *
+	 * @return a boolean representing whether or not the player can shoot
+	 */
 	public boolean getCanShoot()
 	{
 		return canShoot;
 	}
 
+	/**
+	 * Sets whether or not the player can shoot
+	 * @param canShoot
+	 */
 	public void setCanShoot(boolean canShoot)
 	{
 		this.canShoot = canShoot;

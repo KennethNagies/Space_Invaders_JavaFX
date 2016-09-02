@@ -1,3 +1,25 @@
+/*
+ * 	CLASS InstructionsScreen
+ * 		DECLARE pane as a Pane
+ *
+ * 		METHOD InstructionsScreen(Pane)
+ * 			INITIALIZE pane
+ * 			CLEAR pane
+ * 			CALL initializeText()
+ * 			CALL initializeButton()
+ * 		END METHOD InstructionsScreen()
+ *
+ * 		METHOD initializeText()
+ * 			INTIALIZE all text values and locations
+ * 		END METHOD initializeText()
+ *
+ * 		METHOD initializeButton()
+ * 			INITIALIZE the button
+ * 			SET button location
+ * 		END METHOD initializeButton()
+ *
+ * 	END CLASS InstructionsScreen
+ */
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -6,13 +28,20 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ * Creates an Instruction screen that explains to the user how to play
+ * @author Kenneth Nagies
+ * @version September 2, 2016
+ *
+ */
 public class InstructionsScreen
 {
 	private Pane pane;
-	private Text instructions;
-	private Text pageHeading = new Text("Instructions");
-	private Button menuButton = new Button("Main Menu");
 
+	/**
+	 * Initializes the instructions screen
+	 * @param pane the pane to be drawn on to
+	 */
 	public InstructionsScreen(Pane pane)
 	{
 		this.pane = pane;
@@ -22,9 +51,10 @@ public class InstructionsScreen
 	}
 
 	// initialize all text values
-	public void initializeText()
+	private void initializeText()
 	{
-		instructions = new Text("Use the arrow keys to move the ship on the bottom of the screen.\n\nSpacebar fires.\n\nKill all the aliens to progress to the next level.");
+		Text pageHeading = new Text("Instructions");
+		Text instructions = new Text("Use the arrow keys to move the ship on the bottom of the screen.\n\nSpacebar fires.\n\nKill all the aliens to progress to the next level.");
 		instructions.setFont(new Font(40));
 		pageHeading.setFont(new Font(80));
 		pageHeading.setFill(Color.WHITE);
@@ -39,8 +69,9 @@ public class InstructionsScreen
 	}
 
 	// initialize the button
-	public void initializeButton()
+	private void initializeButton()
 	{
+		Button menuButton = new Button("Main Menu");
 		menuButton.setOnAction(new MenuHandler());
 		menuButton.setScaleX(2);
 		menuButton.setScaleY(2);

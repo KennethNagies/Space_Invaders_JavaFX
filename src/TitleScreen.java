@@ -1,4 +1,4 @@
-
+// SAME AS OTHER SCREENS, BUT HAS BUTTONS THAT NAVIGATE TO OTHER SCREENS
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -10,12 +10,6 @@ import javafx.scene.control.Button;
 public class TitleScreen
 {
 	private Pane pane;
-	private Text title= new Text("Space Invaders");
-	private Text subtitle = new Text("By: Kenneth Nagies");
-	private Button playButton = new Button("Play Game");
-	private Button highScoresButton = new Button("High Scores");
-	private Button instructionsButton = new Button("Instructions");
-	private Button quitButton = new Button("Quit");
 
 	public TitleScreen(Pane pane)
 	{
@@ -29,6 +23,8 @@ public class TitleScreen
 	// initialize all text objects
 	private void initializeText()
 	{
+		Text title = new Text("Space Invaders");
+		Text subtitle = new Text("By: Kenneth Nagies");
 		title.setFont(new Font(80));
 		subtitle.setFont(new Font(40));
 		title.setFill(Color.WHITE);
@@ -47,6 +43,10 @@ public class TitleScreen
 	// initialize all buttons
 	private void initializeButtons()
 	{
+		Button playButton = new Button("Play Game");
+		Button highScoresButton = new Button("High Scores");
+		Button instructionsButton = new Button("Instructions");
+		Button quitButton = new Button("Quit");
 		playButton.setOnAction(new PlayHandler());
 		highScoresButton.setOnAction(new HighScoresHandler());
 		instructionsButton.setOnAction(new InstructionsHandler());

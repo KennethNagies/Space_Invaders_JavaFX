@@ -1,5 +1,14 @@
+/*
+ * ASSEMBLES AND STORES AN ARRAY OF ARRAYS OF SHIELD BLOCKS
+ */
 import javafx.scene.layout.Pane;
 
+/**
+ * Constructs the shield from several shield blocks
+ * @author Kenneth Nagies
+ * @version September 2, 2016
+ *
+ */
 public class Shield
 {
 	private ShieldBlock[] row1 = new ShieldBlock[6];
@@ -13,6 +22,11 @@ public class Shield
 	private Pane pane;
 	private int offsetX;
 
+	/**
+	 * Creates a shield at a specified offset
+	 * @param offsetX The offset from the center of the pane that the shield is to be drawn at
+	 * @param pane the pane to draw to
+	 */
 	public Shield(int offsetX, Pane pane)
 	{
 		this.offsetX = offsetX;
@@ -76,7 +90,11 @@ public class Shield
 		}
 	}
 
-	// return a 2d array of shield blocks
+	/**
+	 *  return a 2d array of shield blocks
+	 * 
+	 * @return a 2d array of shield blocks
+	 */
 	public ShieldBlock[][] getBlocks()
 	{
 		return blocks;

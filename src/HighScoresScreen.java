@@ -1,3 +1,53 @@
+/*
+ * 	CLASS HighScoresScreen
+ * 		DECLARE pane as a Pane
+ * 		DECLARE scoreText as a Text of ""
+ * 		DECLARE highScores as an empty ArrayList of type HighScore
+ *
+ * 		METHOD HighScoresScreen(Pane)
+ * 			INITIALIZE pane
+ * 			CALL initializeScores()
+ * 		END METHOD HighScoresScreen(Pane)
+ *
+ * 		METHOD start()
+ * 			CLEAR the pane
+ * 			CALL initializeTEXT()
+ * 			CALL initializeButton()
+ * 		END METHOD start()
+ *
+ * 		METHOD initializeButton()
+ * 			INITIALIZE the main menu button
+ * 			SET the location of the main menu button
+ * 		END METHOD initializeButton()
+ *
+ * 		METHOD initializeScores()
+ * 			PERFORM necessary file operations to fill highScores with 10 high score values
+ * 		END initializeScores()
+ *
+ * 		METHOD initializeText()
+ * 			INITIALIZE scoreText based on the highScores
+ * 			SET the position of scoreText
+ * 		END METHOD initializeText()
+ *
+ * 		METHOD updateText()
+ * 			UPDATE the text based on highScores
+ * 		END METHOD updateText()
+ *
+ * 		METHOD updateFile()
+ * 			UPDATE store file with new highScoreList
+ * 		END METHOD updateFile()
+ *
+ * 		METHOD highEnough(HighScore)
+ * 			RETURN true or false depending on if the score submitted is high enough to use
+ * 		END METHOD highEnough(HighScore)
+ *
+ * 		METHOD addScore(HighScore)
+ * 			ADD the HighScore to highScores
+ * 			SORT highScores in descending order
+ * 			REMOVE the HighScore at position 11
+ * 		END METHOD addScore(HighScore)
+ * 	END CLASS HighScoresScreen
+ */
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.EOFException;
@@ -22,10 +72,8 @@ import javafx.scene.text.Text;
 public class HighScoresScreen
 {
 	private Pane pane;
-	private Text titleText;
 	private Text scoreText = new Text("");
 	private ArrayList<HighScore> highScores = new ArrayList<HighScore>();
-	private Button menuButton = new Button("Main Menu");
 
 	public HighScoresScreen(Pane pane)
 	{
@@ -34,9 +82,11 @@ public class HighScoresScreen
 		initializeScores();
 	}
 
-	// clear and then draw everything to the screen
-	// this is not done in the constructor method because the scores need to be initialized before the screen is drawn
-	// so that the game can check whether or not drawing this screen is necessary
+	/** 
+	 * clear and then draw everything to the screen
+	 * this is not done in the constructor method because the scores need to be initialized before the screen is drawn
+	 * so that the game can check whether or not drawing this screen is necessary
+	 */
 	public void start()
 	{
 		// clear the pane
@@ -46,8 +96,9 @@ public class HighScoresScreen
 		initializeButton();
 	}
 
-	public void initializeButton()
+	private void initializeButton()
 	{
+		Button menuButton = new Button("Main Menu");
 		// set the button's action to the action defined in the MenuHandler class
 		menuButton.setOnAction(new MenuHandler());
 
@@ -137,7 +188,7 @@ public class HighScoresScreen
 	// initialize and display all text values
 	private void initializeText()
 	{
-		titleText = new Text("High Scores");
+		Text titleText = new Text("High Scores");
 		updateText();
 		titleText.setFont(new Font(80));
 		scoreText.setFont(Font.font(java.awt.Font.MONOSPACED,40));
@@ -180,12 +231,20 @@ public class HighScoresScreen
 		}
 	}
 
-	// check to see if a score is high enough to be on the list
+	/**
+	 * 
+	 * @param score a HighScore object to be tested
+	 * @return boolean representation of whether or not the score is high enough to be on the high score list
+	 */
 	public boolean highEnough(HighScore score)
 	{
 		return(highScores.get(9).compareTo(score) > 0);
 	}
 
+	/**
+	 * Adds a score to the high score lis and then sorts it in descending order
+	 * @param score The high score to add to the list
+	 */
 	public void addScore(HighScore score)
 	{
 		// add a new score to the list

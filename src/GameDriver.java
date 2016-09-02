@@ -1,11 +1,21 @@
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
-
+/**
+ * Runs the game
+ * @author Kenneth Nagies
+ * @version September 2, 2016
+ *
+ */
 public class GameDriver extends Application
 {
+    /**
+     * Creates the window that the game is played in
+     * @param primaryStage The stage that will be the base of the viewable window
+     */
 	public void start(Stage primaryStage)
 	{
 		Pane pane = new Pane();
