@@ -1,6 +1,3 @@
-/*
- * ASSEMBLES AND STORES AN ARRAY OF ARRAYS OF SHIELD BLOCKS
- */
 import javafx.scene.layout.Pane;
 
 public class Shield

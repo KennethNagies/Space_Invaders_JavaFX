@@ -1,6 +1,3 @@
-/*
- * LIKE ALIEN, BUT IT CAN ONLY MOVE ONE DIRECTION
- */
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -13,7 +10,7 @@ public class Shot extends Sprite
 	public Shot(Sprite sprite, int direction, Pane pane)
 	{
 		// Creates the images and hitbox for the shot
-		super(2, 8, new Image("/Sprites/PlayerShot.png", 2, 8, false, false), new Image("/Sprites/PlayerShot.png", 2, 8, false, false), pane);
+		super(2, 8, new Image("Sprites/PlayerShot.png", 2, 8, false, false), new Image("Sprites/PlayerShot.png", 2, 8, false, false), pane);
 		body = new ImageView(image1);
 		offsetY = -36 * direction;
 		// Binds the x property to the center of the sprite that shot it

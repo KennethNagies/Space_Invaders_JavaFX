@@ -1,35 +1,3 @@
-/*
- * 	CLASS GameOverScreen
- * 		DECLARE pane as a Pane
- * 		DECLARE score as an int
- * 		DECLARE highScoreScreen as a HighScoresScreen
- * 		DECLARE menuButton as a Button that says "Main Menu"
- *
- * 		METHOD GameOverScreen(int pane)
- * 			INITIALIZE score and pane
- * 			SET the text of the menut button to continue if the score is high enough
- * 			CLEAR the pane
- * 			CALL initializeText
- * 			CALL initializeButton
- * 		END METHOD GameOverScreen(int, pane)
- *
- * 		METHOD initializeText()
- * 			INITIALIZE the text to be displayed on the screen
- * 			SET the position of the text
- * 		END METHOD initializeText()
- *
- * 		METHOD initializeButton()
- * 			INITIALIZE the button
- * 			SET the button's location
- * 		END METHOD initializeButton()
- *
- * 		CLASS MenuHandler
- * 			METHOD handle(ActionEvent)
- * 				DRAW the main menu or initials screen based on the text of the button
- * 			END METHOD handle(ActionEvent)
- * 		END CLASS MenuHandler
- * 	END CLASS GameOverScreen
- */
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -42,8 +10,10 @@ public class GameOverScreen
 {
 	private Pane pane;
 	private int score;
+	private Text gameOverText = new Text("Game Over");
+	private Text scoreText;
+	private Button menuButton = new Button("Main Menu");
 	private HighScoresScreen highScoreScreen;
-	Button menuButton = new Button("Main Menu");
 
 	public GameOverScreen(int score, Pane pane)
 	{
@@ -60,14 +30,13 @@ public class GameOverScreen
 		pane.getChildren().clear();
 		// Initialize all text and buttons
 		initializeText();
-		initializeButton();
+		initializeButtons();
 	}
 
 	private void initializeText()
 	{
-		Text gameOverText = new Text("Game Over");
 		// Set the appropriate values for the texts
-		Text scoreText = new Text("Score: " + score);
+		scoreText = new Text("Score: " + score);
 		// Color the texts white
 		scoreText.setFill(Color.WHITE);
 		gameOverText.setFill(Color.WHITE);
@@ -86,7 +55,7 @@ public class GameOverScreen
 		pane.getChildren().add(scoreText);
 	}
 
-	private void initializeButton()
+	private void initializeButtons()
 	{
 		// Set the button's action to those defined by the MenuHandler class
 		menuButton.setOnAction(new MenuHandler());

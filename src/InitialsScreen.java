@@ -1,34 +1,3 @@
-/*
- *	CLASS InitialsScreen
- *		DECLARE LETTERS as a list that contains every letter
- *		DECLARE pane as a Pane
- *		DECLARE highScoresScreen as a HighScoresScreen
- *		DECLARE score as an int
- *		DECLARE currentInitial as 0
- *		DECLARE indexes as a list of 3 0s
- *		DEXLARE initials as a list of 3 texts
- *		DECLARE underline as a Rectangle
- *
- *		METHOD InitialsScreen(Pane, int, HighScoresScreen)
- *			INITIALIZE pane, score and highScoreScreen
- *			CLEAR the pane
- *			CALL initializeText()
- *			CALL initializeKeys()
- *		END METHOD InitialsScreen(Pane int HighScoresScreen)
- *
- *		METHOD initializeText()
- *			INITIALIZE the values and locations of the text objects
- *		END METHOD intializeText()
- *
- *		METHOD initializeKeys()
- *			SET what the necessary keystrokes do
- *		END METHOD initializeKeys()
- *
- *		METHOD updateText()
- *			UPDATE the text based on indexes
- *		END METHOD updateText()
- *	END CLASS InitialsScreen
- */
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -39,13 +8,15 @@ import javafx.scene.text.Text;
 public class InitialsScreen
 {
 	private static final String[] LETTERS = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-	private Pane pane;
-	private HighScoresScreen highScoreScreen;
-	private int score;
-	private int currentInitial = 0;
-	private int[] indexes = {0,0,0};
-	private Text[] initials = {new Text("A"), new Text("A"), new Text("A")};
-	private Rectangle underline = new Rectangle();
+	Pane pane;
+	HighScoresScreen highScoreScreen;
+	int score;
+	int currentInitial = 0;
+	int[] indexes = {0,0,0};
+	Text headingText = new Text("Enter Your Initials");
+	Text subHeadingText = new Text("(Use The arrow keys to cycle through letters, and press the enter key to submit)");
+	Text[] initials = {new Text("A"), new Text("A"), new Text("A")};
+	Rectangle underline = new Rectangle();
 
 	public InitialsScreen(Pane pane, int score, HighScoresScreen highScoreScreen)
 	{
@@ -62,8 +33,6 @@ public class InitialsScreen
 	// Initialize all text on the screen
 	private void initializeText()
 	{
-		Text headingText = new Text("Enter Your Initials");
-		Text subHeadingText = new Text("(Use The arrow keys to cycle through letters, and press the enter key to submit)");
 		headingText.setFont(new Font(80));
 		subHeadingText.setFont(new Font(20));
 		// use a monospaced font for the initials so that they all have the same width

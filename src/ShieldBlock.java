@@ -1,6 +1,3 @@
-/*
- * 	CREATES A SHIELD BLOCK BASED ON TYPE AND OFFSETS
- */
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -12,12 +9,12 @@ public class ShieldBlock extends Sprite
 	public ShieldBlock(int type, int offsetX, int localOffsetX, int localOffsetY, Pane pane)
 	{
 		// initializes a shield block of type 1
-		super(8, 8, new Image("/Sprites/ShieldBlock_1.png", 8, 8, false, false), new Image("/Sprites/ShieldBlock_1.png", 8, 8, false, false), pane);
+		super(8, 8, new Image("Sprites/ShieldBlock_1.png", 8, 8, false, false), new Image("Sprites/ShieldBlock_1.png", 8, 8, false, false), pane);
 
 		// change the image to be of a type that is not 1 if necessary
 		if(type != 1)
 		{
-			image1 = new Image("/Sprites/ShieldBlock_" + type + ".png", 8, 8, false, false);
+			image1 = new Image("Sprites/ShieldBlock_" + type + ".png", 8, 8, false, false);
 		}
 
 		// set the body to an ImageView of the image
@@ -37,7 +34,7 @@ public class ShieldBlock extends Sprite
 		pane.getChildren().add(body);
 	}
 
-	protected void onCollide(Sprite sprite)
+	public void onCollide(Sprite sprite)
 	{
 		// if hit by any sprite, it is destroyed
 		kill();

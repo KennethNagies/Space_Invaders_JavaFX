@@ -1,23 +1,3 @@
-/*
- * 	DECLARE score as an int
- * 	DECLARE initials as a String
- *
- * 	METHOD HighScore(int, String)
- * 		INITIALIZE score and initials
- * 	END METHOD HighScore(int, String)
- *
- * 	METHOD compareTo(HighScore)
- * 		RETURN a positive, negative, or 0 depending on the way I choose to organize the list
- * 	END METHOD compareTo(HighScore)
- *
- * 	METHOD getScore()
- * 		RETURN score
- * 	END METHOD getScore()
- *
- * 	METHOD getInitials()
- * 		RETURN initials
- * 	END METHOD getInitials()
- */
 import java.io.Serializable;
 
 public class HighScore implements Comparable<HighScore>, Serializable

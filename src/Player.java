@@ -1,6 +1,4 @@
-/*
- * 	SAME AS ALIEN, BUT WITH PLAYER SPRITE
- */
+
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
@@ -15,7 +13,7 @@ public class Player extends Sprite
 	public Player(SpaceInvaders game, Pane pane)
 	{
 		// Constructs a Sprite with the player image and dimensions
-		super(60, 32, new Image("/Sprites/Player.png", 60, 32, false, false), new Image("/Sprites/Player.png", 60, 32, false, false), pane);
+		super(60, 32, new Image("Sprites/Player.png", 60, 32, false, false), new Image("Sprites/Player.png", 60, 32, false, false), pane);
 		body = new ImageView(image1);
 		offsetX = -30;
 		// Binds the x property of the sprite to the center of the pane minus half its width, plus an offset

@@ -15,6 +15,11 @@ import javafx.util.Duration;
 public class SpaceInvaders
 {
 	private Pane pane;
+	private ArrayList<Alien> row1 = new ArrayList<Alien>();
+	private ArrayList<Alien> row2 = new ArrayList<Alien>();
+	private ArrayList<Alien> row3 = new ArrayList<Alien>();
+	private ArrayList<Alien> row4 = new ArrayList<Alien>();
+	private ArrayList<Alien> row5 = new ArrayList<Alien>();
 	private ArrayList<ArrayList<Alien>> aliens = new ArrayList<ArrayList<Alien>>();
 	private boolean moveDown = false;
 	private boolean moveLeft = false;
@@ -26,12 +31,13 @@ public class SpaceInvaders
 	private int score;
 	private int kills = 0;
 	private int round;
-	private int currentRow = 0;
-	private int moveX = 0;
-	private int moveY = 0;
+	int currentRow = 0;
+	int moveX = 0;
+	int moveY = 0;
 
 	private Text scoreText;
 	private Text livesText;
+	private Font font = new Font(40);
 	private int frameCount = 1;
 	private ArrayList<Shot> shotList = new ArrayList<Shot>();
 	private Shield[] shieldList = new Shield[5];
@@ -84,8 +90,8 @@ public class SpaceInvaders
 	{
 		scoreText = new Text("Score: " + String.valueOf(score) + "<" + String.valueOf(round) + ">");
 		livesText = new Text("Lives: " + String.valueOf(lives));
-		scoreText.setFont(new Font(40));
-		livesText.setFont(new Font(40));
+		scoreText.setFont(font);
+		livesText.setFont(font);
 		scoreText.setFill(Color.WHITE);
 		livesText.setFill(Color.WHITE);
 		scoreText.xProperty().bind(pane.widthProperty().divide(4.5).subtract(scoreText.getLayoutBounds().getWidth()/2));
@@ -97,7 +103,7 @@ public class SpaceInvaders
 	}
 
 	// update text objects to reflect current score and lives
-	private void updateText()
+	public void updateText()
 	{
 		scoreText.setText("Score: " + String.valueOf(score) + "<" + String.valueOf(round) + ">");
 		livesText.setText("Lives: " + String.valueOf(lives));
@@ -480,11 +486,11 @@ public class SpaceInvaders
 		int type = 1;
 		// To handle differences in size between alien sprites
 		int widthPadding = 0;
-		aliens.add(new ArrayList<Alien>());
-		aliens.add(new ArrayList<Alien>());
-		aliens.add(new ArrayList<Alien>());
-		aliens.add(new ArrayList<Alien>());
-		aliens.add(new ArrayList<Alien>());
+		aliens.add(row1);
+		aliens.add(row2);
+		aliens.add(row3);
+		aliens.add(row4);
+		aliens.add(row5);
 		for (int i = 0; i < 5; i++)
 		{
 			// Adjusts width padding for small sprites (48 pixels are reserved in width, and 32 are used for type 1)
@@ -576,7 +582,7 @@ public class SpaceInvaders
 		}
 	}
 
-	private void end()
+	public void end()
 	{
 		// stops all animations
 		shotAnimation.stop();

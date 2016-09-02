@@ -1,39 +1,3 @@
-/*
- * 	CLASS Alien
- * 		DECLARE type as an integer
- * 		DECLARE game as a SpaceInvaders
- *
- * 		METHOD Alien(double, double, int, SpaceInvaders, Pane)
- * 			CALL the super constructor
- * 			INITIALIZE images, hitbox, and body based on type
- * 			BIND the positions of the body and hitbox based on the offsets
- * 		END METHOD Alien(double, double, int, SpaceInvaders, Pane)
- *
- * 		METHOD OnCollide(Sprite)
- * 			CALL Kill() if hit by a shot
- * 		END METHOD OnCollide(Sprite)
- *
- * 		METHOD Kill()
- * 			DESTROY the Sprite
- * 		END METHOD KIll()
- *
- * 		METHOD animate()
- * 			ALTERNATE images to simulate animation
- * 		END METHOD animate()
- *
- * 		METHOD move(int, int)
- * 			MOVE the sprite the specified amounts
- * 		END METHOD Move()
- *
- * 		METHOD shoot()
- * 			SHOOT
- * 		END METHOD
- *
- * 		METHOD getType()
- * 			RETURN type
- * 		END METHOD getType()
- * 	END CLASS Alien
- */
 import java.util.ArrayList;
 
 import javafx.scene.image.Image;
@@ -49,20 +13,20 @@ public class Alien extends Sprite
 	public Alien(double offsetX, double offsetY, int type, SpaceInvaders game, Pane pane)
 	{
 		// Constructs a default alien of type 1
-		super(32, 32, new Image("/Sprites/Alien1_1.png", 32, 32, false, false), new Image("/Sprites/Alien1_2.png", 32, 32, false, false), pane);
+		super(32, 32, new Image("Sprites/Alien1_1.png", 32, 32, false, false), new Image("Sprites/Alien1_2.png", 32, 32, false, false), pane);
 		this.type = type;
 		// overwrites the type one and makes a type 2
 		if (type == 2)
 		{
-			image1 = new Image("/Sprites/Alien2_1.png", 44, 32, false, false);
-			image2 = new Image("/Sprites/Alien2_2.png", 44, 32, false, false);
+			image1 = new Image("Sprites/Alien2_1.png", 44, 32, false, false);
+			image2 = new Image("Sprites/Alien2_2.png", 44, 32, false, false);
 			hitbox.setBoundaries(new Rectangle(0, 0, 44, 32));
 		}
 		// overwrites the type 1 and makes a type 3
 		if (type == 3)
 		{
-			image1 = new Image("/Sprites/Alien3_1.png", 48, 32, false, false);
-			image2 = new Image("/Sprites/Alien3_2.png", 48, 32, false, false);
+			image1 = new Image("Sprites/Alien3_1.png", 48, 32, false, false);
+			image2 = new Image("Sprites/Alien3_2.png", 48, 32, false, false);
 			hitbox.setBoundaries(new Rectangle(0, 0, 48, 32));
 		}
 		// Creates the image that is the body of the sprite
@@ -86,8 +50,7 @@ public class Alien extends Sprite
 
 	}
 
-	@Override
-	protected void onCollide(Sprite sprite)
+	public void onCollide(Sprite sprite)
 	{
 		// If the colliding sprite is a shot...
 		if(sprite instanceof Shot)
@@ -103,6 +66,7 @@ public class Alien extends Sprite
 
 	public void kill()
 	{
+		System.out.println("Killed: " + alive);
 		// removes the image and hitbox from the pane's children
 		pane.getChildren().remove(hitbox.getBoundaries());
 		pane.getChildren().remove(body);
@@ -127,6 +91,13 @@ public class Alien extends Sprite
 		{
 			body.setImage(image1);
 		}
+	}
+
+	// Checks if a sprite is the same as this one
+	// POSSIBLY REMOVE
+	public boolean equals(Object obj)
+	{
+		return obj == this;
 	}
 
 
